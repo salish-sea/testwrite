@@ -1,37 +1,22 @@
 #.github/workflows/scheduled-run.yml
-
-name:  Run test.py once each day after the 6 am liveocean build
+name:  Run test.py on push
 
 on:
   push:
     branches:
       - main
-  schedule:
-    ## run cron job at 8 am local/Pacific
-    - cron: '0 15 * * *'
 jobs:
   build:
-    name: Trigger liveocean update
+    name: Write file to known location
     runs-on: Ubuntu-latest
     steps:
-      - name: setup python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v2
+
+      - run: mkdir -p path/to/artifact
+
+      - run: echo hello > path/to/artifact/world.txt
+
+      - uses: actions/upload-artifact@v3
         with:
-          python-version: 3.8
-      - name: install pip
-        run:
-          python -m pip install --upgrade pip
-      - name: install pillow
-        run:
-          python -m pip install Pillow
-      - name:  install requests
-        run:
-          python -m pip install requests
-      - name:
-        run:
-          sudo apt install ffmpeg
-      - name: check out repository code
-        uses: actions/checkout@v2
-      - name: execute py script
-        run:
-          python ./test.py
+          name: my-artifact
+          path: path/to/artifact/world.txt
