@@ -12,11 +12,11 @@ jobs:
     - uses: pCYSl5EDgo/cat@master
       id: hello
       with:
-        path: ${{ env.home }}
+        path: ${{ env.home }}text.txt
 
     - run: echo $TEXT
       env:
         TEXT: ${{ steps.hello.outputs.text }}
-    - run: echo $PATH
+    - run: echo $PATH   ## env.home seems to be empty
       env:
         PATH: ${{ env.home }}
