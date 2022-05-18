@@ -1,22 +1,19 @@
-#.github/workflows/scheduled-run.yml
-name:  Run test.py on push
+name: Example
 
-on:
-  push:
-    branches:
-      - main
+on: push
+
 jobs:
-  build:
-    name: Write file to known location
-    runs-on: Ubuntu-latest
+  echo:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+    - run: echo -n -e "HELLO\n !\n World!" > textv.txt
 
-      - run: mkdir -p path/to/artifact
+    - uses: pCYSl5EDgo/cat@master
+      id: hello
+      with:
+        path: textv.txt
 
-      - run: echo hello > path/to/artifact/world.txt
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: path/to/artifact/world.txt
+    - run: echo $TEXT
+      env:
+        TEXT: ${{ steps.hello.outputs.textv }}
