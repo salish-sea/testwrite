@@ -12,7 +12,7 @@ jobs:
     - uses: pCYSl5EDgo/cat@master
       id: hello
       with:
-        path: text.txt
+        path: ${{ env.home}}text.txt
 
     - run: echo $TEXT
       env:
