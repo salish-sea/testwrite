@@ -1,6 +1,6 @@
 #.github/workflows/scheduled-run.yml
 
-name:  Run daily-update.py once each day after the 6 am liveocean build
+name:  Run test.py once each day after the 6 am liveocean build
 
 on:
   push:
