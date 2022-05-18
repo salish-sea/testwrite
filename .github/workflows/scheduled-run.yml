@@ -7,13 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo -n -e "HELLO\n !\n World!" >  ${{ env.home}}text.txt
+    - run: echo -n -e "HELLO\n !\n World!" >  ${{ env.home }}text.txt
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
       with:
-        path: ${{ env.home}}text.txt
+        path: ${{ env.home }}text.txt
 
     - run: echo $TEXT
       env:
         TEXT: ${{ steps.hello.outputs.text }}
+    - run: echo $PATH
+        env:
+          PATH: ${{ env.home }}
