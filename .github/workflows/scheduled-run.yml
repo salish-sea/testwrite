@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo -n -e "HELLO\n !\n World!" > textv.txt
+    - run: echo -n -e "HELLO\n !\n World!" > text.txt
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
       with:
-        path: textv.txt
+        path: text.txt
 
     - run: echo $TEXT
       env:
-        TEXT: ${{ steps.hello.outputs.textv }}
+        TEXT: ${{ steps.hello.outputs.text }}
