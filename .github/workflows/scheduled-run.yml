@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo -n -e "HELLO\n !\n World!" > text.txt
+    - run: echo -n -e "HELLO\n !\n World!" >  ${{ env.home}}text.txt
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
