@@ -34,4 +34,4 @@ jobs:
         uses: actions/checkout@v2
       - name: execute py script
         run:
-          python daily-update.py
+          python test.py
