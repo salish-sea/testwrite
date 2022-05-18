@@ -5,4 +5,4 @@ with open('text.txt', 'w') as f:
     f.writelines(lines)
 
 with open ('text.txt', 'r') as f:
-    print(f.readline)
+    print(f.readline())
